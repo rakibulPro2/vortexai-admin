@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard | VortexAI</title>
+  <meta name="description" content="VortexAI: responsive HTML and Tailwind CSS admin dashboard template. Dashboard page." />
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <!-- Applies the saved light/dark theme before the page paints -->
+  <script src="assets/js/theme-init.js"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-midnight-50 dark:bg-midnight-950 font-sans text-midnight-700 dark:text-midnight-300 antialiased selection:bg-volt-500/40 selection:text-white">
+
+  <!-- ==================== MOBILE SIDEBAR OVERLAY (dims the page while the sidebar is open) ==================== -->
+  <div id="overlay" class="fixed inset-0 z-30 hidden bg-black/60 backdrop-blur-sm lg:hidden"></div>
+
+  <!-- ==================== MAIN SIDEBAR NAVIGATION (identical on every page) ==================== -->
+  <aside id="sidebar" class="fixed inset-y-0 left-0 z-40 flex w-64 -translate-x-full flex-col border-r border-midnight-200 dark:border-white/5 bg-midnight-50 dark:bg-midnight-950 p-4 transition-transform duration-300 lg:translate-x-0" aria-label="Sidebar">
+    <div class="flex items-center justify-between px-2 py-2">
+      <a href="index.html" class="flex items-center gap-2.5 text-lg font-bold text-midnight-900 dark:text-white">
+        <span class="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-volt-600 to-cyber-500 shadow-lg shadow-volt-500/30 text-white"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 0 1 9 9 6 6 0 0 1-6 6 3.5 3.5 0 0 1-3.5-3.5 2 2 0 0 1 2-2"/><path d="M12 21a9 9 0 0 1-9-9 6 6 0 0 1 6-6 3.5 3.5 0 0 1 3.5 3.5 2 2 0 0 1-2 2"/></svg></span>
+        VortexAI
+      </a>
+      <button id="close-btn" type="button" class="grid h-9 w-9 place-items-center rounded-lg text-midnight-600 dark:text-midnight-400 transition hover:bg-midnight-100 dark:hover:bg-white/5 hover:text-midnight-900 dark:hover:text-white lg:hidden" aria-label="Close menu"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+
+    <nav class="mt-8 flex-1 space-y-1" aria-label="Main">
+      <p class="px-3 pb-2 text-xs font-semibold text-midnight-500">Menu</p>
+        <a href="index.html" class="group vx-nav-link active bg-volt-500/10 text-volt-700 ring-1 ring-volt-400/20 dark:text-white" aria-current="page"><span class="transition-colors duration-300 text-volt-700 dark:text-volt-400"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3h7v9H3zM14 3h7v5h-7zM14 12h7v9h-7zM3 16h7v5H3z"/></svg></span>Dashboard</a>
+        <a href="analytics.html" class="group vx-nav-link text-midnight-600 hover:bg-midnight-100 hover:text-midnight-900 dark:text-midnight-400 dark:hover:bg-white/5 dark:hover:text-white"><span class="transition-colors duration-300 text-midnight-400 group-hover:text-volt-700 dark:text-midnight-500 dark:group-hover:text-volt-400"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></span>Analytics</a>
+        <a href="users.html" class="group vx-nav-link text-midnight-600 hover:bg-midnight-100 hover:text-midnight-900 dark:text-midnight-400 dark:hover:bg-white/5 dark:hover:text-white"><span class="transition-colors duration-300 text-midnight-400 group-hover:text-volt-700 dark:text-midnight-500 dark:group-hover:text-volt-400"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>Users</a>
+        <a href="products.html" class="group vx-nav-link text-midnight-600 hover:bg-midnight-100 hover:text-midnight-900 dark:text-midnight-400 dark:hover:bg-white/5 dark:hover:text-white"><span class="transition-colors duration-300 text-midnight-400 group-hover:text-volt-700 dark:text-midnight-500 dark:group-hover:text-volt-400"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7 8.7 5 8.7-5M12 22V12"/></svg></span>Products</a>
+        <a href="chat.html" class="group vx-nav-link text-midnight-600 hover:bg-midnight-100 hover:text-midnight-900 dark:text-midnight-400 dark:hover:bg-white/5 dark:hover:text-white"><span class="transition-colors duration-300 text-midnight-400 group-hover:text-volt-700 dark:text-midnight-500 dark:group-hover:text-volt-400"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>Chat<span class="chat-badge ml-auto rounded-full bg-rose-500 px-2 py-0.5 text-[10px] font-bold text-white">6</span></a>
+        <a href="file-manager.html" class="group vx-nav-link text-midnight-600 hover:bg-midnight-100 hover:text-midnight-900 dark:text-midnight-400 dark:hover:bg-white/5 dark:hover:text-white"><span class="transition-colors duration-300 text-midnight-400 group-hover:text-volt-700 dark:text-midnight-500 dark:group-hover:text-volt-400"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>Files</a>
+        <a href="billing.html" class="group vx-nav-link text-midnight-600 hover:bg-midnight-100 hover:text-midnight-900 dark:text-midnight-400 dark:hover:bg-white/5 dark:hover:text-white"><span class="transition-colors duration-300 text-midnight-400 group-hover:text-volt-700 dark:text-midnight-500 dark:group-hover:text-volt-400"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>Billing</a>
+        <a href="calendar.html" class="group vx-nav-link text-midnight-600 hover:bg-midnight-100 hover:text-midnight-900 dark:text-midnight-400 dark:hover:bg-white/5 dark:hover:text-white"><span class="transition-colors duration-300 text-midnight-400 group-hover:text-volt-700 dark:text-midnight-500 dark:group-hover:text-volt-400"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>Calendar</a>
+        <a href="settings.html" class="group vx-nav-link text-midnight-600 hover:bg-midnight-100 hover:text-midnight-900 dark:text-midnight-400 dark:hover:bg-white/5 dark:hover:text-white"><span class="transition-colors duration-300 text-midnight-400 group-hover:text-volt-700 dark:text-midnight-500 dark:group-hover:text-volt-400"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></span>Settings</a>
+    </nav>
+
+    <!-- ---------- Signed-in user card + logout shortcut ---------- -->
+    <div class="rounded-2xl border border-midnight-200 dark:border-white/5 bg-white shadow-sm shadow-midnight-200/70 dark:bg-midnight-800/40 dark:shadow-none p-3">
+      <div class="flex items-center gap-3">
+        <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gradient-to-br from-volt-600 to-cyan-500 text-sm font-bold text-white">AM</span>
+        <div class="min-w-0 flex-1"><p class="truncate text-sm font-semibold text-midnight-900 dark:text-white">Alex Morgan</p><p class="truncate text-xs text-midnight-500">alex@vortexai.io</p></div>
+        <button type="button" data-logout-open class="grid h-8 w-8 place-items-center rounded-lg text-midnight-600 dark:text-midnight-400 transition hover:bg-midnight-100 dark:hover:bg-white/5 hover:text-rose-600 dark:hover:text-rose-400" aria-label="Log out"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg></button>
+      </div>
+    </div>
+  </aside>
+  <!-- END OF MAIN SIDEBAR NAVIGATION -->
+
+  <!-- ==================== MAIN CONTENT WRAPPER (offset by the fixed sidebar on large screens) ==================== -->
+  <div class="lg:pl-64">
+
+    <!-- ==================== TOP HEADER: BREADCRUMB, SEARCH, THEME TOGGLE, NOTIFICATIONS, PROFILE MENU ==================== -->
+    <header class="sticky top-0 z-20 flex h-16 items-center gap-4 border-b border-midnight-200 dark:border-white/5 bg-white/70 dark:bg-midnight-950/70 px-4 backdrop-blur-xl sm:px-6">
+      <button id="menu-btn" type="button" class="grid h-10 w-10 place-items-center rounded-xl text-midnight-700 dark:text-midnight-300 ring-1 ring-midnight-900/10 dark:ring-white/10 transition hover:bg-midnight-100 dark:hover:bg-white/5 lg:hidden" aria-label="Open menu"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+
+      <nav aria-label="Breadcrumb" class="hidden items-center gap-2 text-sm sm:flex">
+        <a href="index.html" class="text-midnight-500 transition hover:text-midnight-900 dark:hover:text-white">Home</a><svg class="h-4 w-4 text-midnight-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg><span id="crumb" class="font-medium text-midnight-900 dark:text-white">Dashboard</span>
+      </nav>
+
+      <div class="ml-auto flex items-center gap-3">
+        <label class="relative hidden md:block">
+          <span class="sr-only">Search</span>
+          <span class="pointer-events-none absolute inset-y-0 left-3 flex items-center text-midnight-500"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span>
+          <input type="search" placeholder="Search anything..." class="w-64 rounded-xl border border-midnight-200 dark:border-white/10 bg-midnight-100 dark:bg-midnight-800/50 py-2 pl-9 pr-3 text-sm text-midnight-900 dark:text-white placeholder-midnight-500 outline-none transition-all duration-300 focus:w-80 focus:border-volt-400 focus:ring-2 focus:ring-volt-400/30" />
+        </label>
+        <!-- Light / Dark toggle -->
+        <button id="theme-btn" type="button" class="grid h-10 w-10 place-items-center rounded-xl text-midnight-600 ring-1 ring-midnight-900/10 transition-all duration-300 hover:bg-midnight-100 hover:text-midnight-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-volt-400 dark:text-midnight-300 dark:ring-white/10 dark:hover:bg-white/5 dark:hover:text-white" aria-label="Switch between light and dark mode">
+          <!-- Sun (shown in dark mode) -->
+          <svg class="hidden h-5 w-5 dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <!-- Moon (shown in light mode) -->
+          <svg class="h-5 w-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/></svg>
+        </button>
+        <!-- ---------- Notifications dropdown (behaviour: assets/js/app.js, section 2b) ---------- -->
+        <div class="relative" data-dropdown>
+          <button type="button" data-dropdown-btn aria-expanded="false" aria-haspopup="true" aria-controls="notif-panel" class="relative grid h-10 w-10 place-items-center rounded-xl text-midnight-700 dark:text-midnight-300 ring-1 ring-midnight-900/10 dark:ring-white/10 transition-all duration-300 hover:bg-midnight-100 dark:hover:bg-white/5 hover:text-midnight-900 dark:hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-volt-400" aria-label="Notifications">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg><span id="notif-dot" class="absolute right-2.5 top-2.5 h-2 w-2 rounded-full bg-rose-500 ring-2 ring-white dark:ring-midnight-950"></span>
+          </button>
+          <div id="notif-panel" data-dropdown-panel class="invisible translate-y-2 scale-95 opacity-0 transition-all duration-200 fixed inset-x-4 top-[4.5rem] z-50 origin-top-right overflow-hidden rounded-2xl glass border border-midnight-200 shadow-2xl shadow-midnight-300/50 dark:border-white/10 dark:shadow-black/50 sm:absolute sm:inset-x-auto sm:right-0 sm:top-full sm:mt-3 sm:w-[22rem]" role="region" aria-label="Notifications">
+            <!-- Header -->
+            <div class="flex items-center justify-between border-b border-midnight-200 px-4 py-3.5 dark:border-white/10">
+              <div class="flex items-center gap-2"><h2 class="text-sm font-semibold text-midnight-900 dark:text-white">Notifications</h2><span id="notif-count" class="rounded-full bg-volt-500/10 px-2 py-0.5 text-[11px] font-semibold text-volt-700 dark:text-volt-300">3 new</span></div>
+              <button id="notif-readall" type="button" class="text-xs font-medium text-volt-700 transition hover:text-volt-500 disabled:pointer-events-none disabled:opacity-40 dark:text-volt-400">Mark all as read</button>
+            </div>
+            <!-- Scrollable list -->
+            <ul class="max-h-80 divide-y divide-midnight-200 overflow-y-auto dark:divide-white/5">
+            <li>
+              <button type="button" data-notif data-unread="true" class="flex w-full gap-3 px-4 py-3.5 text-left transition-colors duration-300 hover:bg-midnight-50 focus:outline-none focus-visible:bg-midnight-50 dark:hover:bg-white/5 dark:focus-visible:bg-white/5 bg-volt-500/5">
+                <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg></span>
+                <span class="min-w-0 flex-1">
+                  <span class="flex items-start justify-between gap-2"><span class="text-sm font-semibold text-midnight-900 dark:text-white">New user registered</span><span class="notif-unread mt-1.5 h-2 w-2 shrink-0 rounded-full bg-volt-500" role="img" aria-label="Unread"></span></span>
+                  <span class="mt-0.5 block text-xs text-midnight-500">Sofia Davis just joined your workspace.</span>
+                  <span class="mt-1 block text-[11px] text-midnight-400">2 min ago</span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button type="button" data-notif data-unread="true" class="flex w-full gap-3 px-4 py-3.5 text-left transition-colors duration-300 hover:bg-midnight-50 focus:outline-none focus-visible:bg-midnight-50 dark:hover:bg-white/5 dark:focus-visible:bg-white/5 bg-volt-500/5">
+                <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M6 6h.01M6 18h.01"/></svg></span>
+                <span class="min-w-0 flex-1">
+                  <span class="flex items-start justify-between gap-2"><span class="text-sm font-semibold text-midnight-900 dark:text-white">Server usage reached 85%</span><span class="notif-unread mt-1.5 h-2 w-2 shrink-0 rounded-full bg-volt-500" role="img" aria-label="Unread"></span></span>
+                  <span class="mt-0.5 block text-xs text-midnight-500">GPU cluster us-east-1 is close to capacity.</span>
+                  <span class="mt-1 block text-[11px] text-midnight-400">18 min ago</span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button type="button" data-notif data-unread="true" class="flex w-full gap-3 px-4 py-3.5 text-left transition-colors duration-300 hover:bg-midnight-50 focus:outline-none focus-visible:bg-midnight-50 dark:hover:bg-white/5 dark:focus-visible:bg-white/5 bg-volt-500/5">
+                <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-volt-500/10 text-volt-700 dark:text-volt-400"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+                <span class="min-w-0 flex-1">
+                  <span class="flex items-start justify-between gap-2"><span class="text-sm font-semibold text-midnight-900 dark:text-white">Invoice #1024 paid</span><span class="notif-unread mt-1.5 h-2 w-2 shrink-0 rounded-full bg-volt-500" role="img" aria-label="Unread"></span></span>
+                  <span class="mt-0.5 block text-xs text-midnight-500">Payment of $299.00 received from Acme Inc.</span>
+                  <span class="mt-1 block text-[11px] text-midnight-400">1 hour ago</span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button type="button" data-notif data-unread="false" class="flex w-full gap-3 px-4 py-3.5 text-left transition-colors duration-300 hover:bg-midnight-50 focus:outline-none focus-visible:bg-midnight-50 dark:hover:bg-white/5 dark:focus-visible:bg-white/5">
+                <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-cyber-500/10 text-cyber-600 dark:text-cyber-400"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9zM19 15l.7 1.8L21.5 17.5l-1.8.7L19 20l-.7-1.8-1.8-.7 1.8-.7z"/></svg></span>
+                <span class="min-w-0 flex-1">
+                  <span class="flex items-start justify-between gap-2"><span class="text-sm font-semibold text-midnight-900 dark:text-white">AI model training completed</span><span class="notif-unread mt-1.5 h-2 w-2 shrink-0 rounded-full bg-volt-500 hidden" role="img" aria-label="Unread"></span></span>
+                  <span class="mt-0.5 block text-xs text-midnight-500">Model v3.2 finished with 97.4% accuracy.</span>
+                  <span class="mt-1 block text-[11px] text-midnight-400">Yesterday</span>
+                </span>
+              </button>
+            </li>
+            </ul>
+            <!-- Footer -->
+            <a href="#" class="block border-t border-midnight-200 px-4 py-3 text-center text-sm font-medium text-volt-700 transition hover:bg-midnight-50 dark:border-white/10 dark:text-volt-400 dark:hover:bg-white/5">View All Notifications</a>
+          </div>
+        </div>
+        <!-- ---------- Profile dropdown (behaviour: assets/js/app.js, section 2b) ---------- -->
+        <div class="relative" data-dropdown>
+          <button type="button" data-dropdown-btn aria-expanded="false" aria-haspopup="true" aria-controls="profile-panel" class="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-volt-600 to-cyan-500 text-sm font-bold text-white transition-all duration-300 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-volt-400" aria-label="Account">AM</button>
+          <div id="profile-panel" data-dropdown-panel class="invisible translate-y-2 scale-95 opacity-0 transition-all duration-200 absolute right-0 top-full z-50 mt-3 w-64 origin-top-right overflow-hidden rounded-2xl glass border border-midnight-200 shadow-2xl shadow-midnight-300/50 dark:border-white/10 dark:shadow-black/50" role="menu" aria-label="Account menu">
+            <!-- User info -->
+            <div class="flex items-center gap-3 border-b border-midnight-200 p-4 dark:border-white/10">
+              <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-gradient-to-br from-volt-600 to-cyan-500 text-sm font-bold text-white">AM</span>
+              <div class="min-w-0"><p class="truncate text-sm font-semibold text-midnight-900 dark:text-white">Alex Morgan</p><p class="truncate text-xs text-midnight-500">alex@vortexai.io</p></div>
+            </div>
+            <!-- Menu -->
+            <div class="space-y-0.5 p-2">
+              <a href="settings.html#profile" role="menuitem" class="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-midnight-600 transition-all duration-300 hover:bg-midnight-100 hover:text-midnight-900 focus:outline-none focus-visible:bg-midnight-100 dark:text-midnight-300 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5"><span class="text-midnight-400 transition-colors duration-300 group-hover:text-volt-700 dark:group-hover:text-volt-400"><svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>My Profile</a>
+              <a href="settings.html#security" role="menuitem" class="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-midnight-600 transition-all duration-300 hover:bg-midnight-100 hover:text-midnight-900 focus:outline-none focus-visible:bg-midnight-100 dark:text-midnight-300 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5"><span class="text-midnight-400 transition-colors duration-300 group-hover:text-volt-700 dark:group-hover:text-volt-400"><svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>Account Settings</a>
+              <a href="billing.html" role="menuitem" class="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-midnight-600 transition-all duration-300 hover:bg-midnight-100 hover:text-midnight-900 focus:outline-none focus-visible:bg-midnight-100 dark:text-midnight-300 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5"><span class="text-midnight-400 transition-colors duration-300 group-hover:text-volt-700 dark:group-hover:text-volt-400"><svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>Billing Plan</a>
+            </div>
+            <div class="border-t border-midnight-200 p-2 dark:border-white/10">
+              <button type="button" role="menuitem" data-logout-open class="group flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-medium text-rose-600 transition-all duration-300 hover:bg-rose-500/10 focus:outline-none focus-visible:bg-rose-500/10 dark:text-rose-400"><svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>Logout</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- END OF TOP HEADER -->
+
+    <!-- ==================== PAGE CONTENT: DASHBOARD ==================== -->
+    <main class="space-y-6 p-4 sm:p-6">
+
+      <!-- ==================== WELCOME BANNER ==================== -->
+      <section class="animate-gradient neon-border relative overflow-hidden rounded-3xl border border-midnight-200 bg-gradient-to-r from-volt-600/25 via-cyber-600/20 to-midnight-100 p-6 dark:border-white/5 dark:to-midnight-800/40 sm:p-8">
+        <div class="pointer-events-none absolute -right-10 -top-16 h-56 w-56 rounded-full bg-cyber-500/20 blur-3xl"></div>
+        <div class="relative flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+          <div>
+            <p class="flex items-center gap-2 text-sm font-medium text-volt-700 dark:text-volt-300"><span id="today">Monday, November 2</span><span class="hidden h-1 w-1 rounded-full bg-midnight-400 sm:block"></span><span class="hidden items-center gap-1.5 sm:flex"><span class="h-2 w-2 animate-neon-pulse rounded-full bg-volt-500"></span>All systems operational</span></p>
+            <h1 class="mt-2 text-display-md tracking-tight text-midnight-900 dark:text-white sm:text-display-lg">Welcome back, Alex <span aria-hidden="true">&#128075;</span></h1>
+            <p class="mt-2 max-w-xl text-sm text-midnight-700 dark:text-midnight-300">Revenue is up <span class="font-semibold text-volt-700 dark:text-volt-400">12.5%</span> this week and you have <span class="font-semibold text-midnight-900 dark:text-white">3 tasks</span> due today. Here is what is happening across your workspace.</p>
+          </div>
+          <a href="analytics.html" class="vx-btn-primary shrink-0"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>New report</a>
+        </div>
+      </section>
+      <!-- END OF WELCOME BANNER -->
+
+      <!-- ==================== KEY METRICS ==================== -->
+      <section class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4" aria-label="Key metrics">
+        <article class="group vx-card p-5 transition-all duration-300 hover:-translate-y-1 hover:border-volt-400/40">
+          <div class="flex items-center justify-between">
+            <p class="text-sm font-medium text-midnight-600 dark:text-midnight-400">Total Revenue</p>
+            <span class="grid h-10 w-10 place-items-center rounded-xl transition-transform duration-300 group-hover:scale-110 bg-volt-500/10 text-volt-700 dark:text-volt-400"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+          </div>
+          <p class="mt-4 text-3xl font-bold tracking-tight tabular text-midnight-900 dark:text-white">$48,290</p>
+          <p class="mt-3 flex items-center gap-2 text-xs text-midnight-500">
+            <span class="vx-pill !gap-1 !px-2 !py-0.5 bg-volt-500/10 text-volt-700 ring-volt-500/20 dark:text-volt-400"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 15 7-7 7 7"/></svg>+12.5%</span> this week
+          </p>
+        </article>
+        <article class="group vx-card p-5 transition-all duration-300 hover:-translate-y-1 hover:border-cyber-400/40">
+          <div class="flex items-center justify-between">
+            <p class="text-sm font-medium text-midnight-600 dark:text-midnight-400">Active Users</p>
+            <span class="grid h-10 w-10 place-items-center rounded-xl transition-transform duration-300 group-hover:scale-110 bg-cyber-500/10 text-cyber-700 dark:text-cyber-400"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          </div>
+          <p class="mt-4 text-3xl font-bold tracking-tight tabular text-midnight-900 dark:text-white">12,846</p>
+          <p class="mt-3 flex items-center gap-2 text-xs text-midnight-500">
+            <span class="vx-pill !gap-1 !px-2 !py-0.5 bg-volt-500/10 text-volt-700 ring-volt-500/20 dark:text-volt-400"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 15 7-7 7 7"/></svg>+8.2%</span> this week
+          </p>
+        </article>
+        <article class="group vx-card p-5 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40">
+          <div class="flex items-center justify-between">
+            <p class="text-sm font-medium text-midnight-600 dark:text-midnight-400">New Sales</p>
+            <span class="grid h-10 w-10 place-items-center rounded-xl transition-transform duration-300 group-hover:scale-110 bg-cyan-500/10 text-cyan-700 dark:text-cyan-400"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg></span>
+          </div>
+          <p class="mt-4 text-3xl font-bold tracking-tight tabular text-midnight-900 dark:text-white">1,284</p>
+          <p class="mt-3 flex items-center gap-2 text-xs text-midnight-500">
+            <span class="vx-pill !gap-1 !px-2 !py-0.5 bg-rose-500/10 text-rose-700 ring-rose-500/20 dark:text-rose-400"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m19 9-7 7-7-7"/></svg>-3.1%</span> this week
+          </p>
+        </article>
+        <article class="group vx-card p-5 transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/40">
+          <div class="flex items-center justify-between">
+            <p class="text-sm font-medium text-midnight-600 dark:text-midnight-400">Conversion Rate</p>
+            <span class="grid h-10 w-10 place-items-center rounded-xl transition-transform duration-300 group-hover:scale-110 bg-amber-500/10 text-amber-700 dark:text-amber-400"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></span>
+          </div>
+          <p class="mt-4 text-3xl font-bold tracking-tight tabular text-midnight-900 dark:text-white">4.62%</p>
+          <p class="mt-3 flex items-center gap-2 text-xs text-midnight-500">
+            <span class="vx-pill !gap-1 !px-2 !py-0.5 bg-volt-500/10 text-volt-700 ring-volt-500/20 dark:text-volt-400"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 15 7-7 7 7"/></svg>+1.4%</span> this week
+          </p>
+        </article>
+      </section>
+      <!-- END OF KEY METRICS -->
+
+      <!-- ==================== LIVE SYSTEM RESOURCE & API PERFORMANCE MONITOR ==================== -->
+      <!-- Gauges are SVG rings driven by stroke-dashoffset. assets/js/app.js refreshes them every 2 s with simulated values. -->
+      <section id="sys-monitor" class="vx-card p-5 sm:p-6" aria-labelledby="monitor-title">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h2 id="monitor-title" class="font-semibold text-midnight-900 dark:text-white">Live System &amp; API Performance</h2>
+            <p class="text-sm text-midnight-500">Production cluster, us-east-1. Simulated values for the demo.</p>
+          </div>
+          <span class="vx-pill bg-volt-500/10 text-volt-700 ring-volt-500/25 dark:text-volt-400"><span class="h-2 w-2 animate-neon-pulse rounded-full bg-volt-500"></span>Live</span>
+        </div>
+        <div class="mt-6 grid gap-8 sm:grid-cols-3 lg:grid-cols-5">
+          <div class="flex flex-col items-center text-center">
+            <div class="relative h-32 w-32">
+              <svg viewBox="0 0 120 120" class="h-full w-full -rotate-90" role="img" aria-label="CPU load gauge">
+                <defs><linearGradient id="grad-cpu" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#10B981"/><stop offset="1" stop-color="#34D399"/></linearGradient></defs>
+                <circle cx="60" cy="60" r="52" fill="none" stroke-width="9" class="stroke-midnight-200 dark:stroke-white/10"/>
+                <circle id="ring-cpu" cx="60" cy="60" r="52" fill="none" stroke="url(#grad-cpu)" stroke-width="9" stroke-linecap="round" stroke-dasharray="326.73" stroke-dashoffset="189.50" class="transition-[stroke-dashoffset] duration-700 ease-out-expo"/>
+              </svg>
+              <div class="absolute inset-0 grid place-items-center"><p id="val-cpu" class="text-2xl font-bold tabular text-midnight-900 dark:text-white">42<span class="text-sm font-semibold text-midnight-500">%</span></p></div>
+            </div>
+            <p class="mt-3 text-sm font-semibold text-midnight-900 dark:text-white">CPU load</p>
+            <p id="sub-cpu" class="text-xs text-midnight-500">8 cores at 3.2 GHz</p>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <div class="relative h-32 w-32">
+              <svg viewBox="0 0 120 120" class="h-full w-full -rotate-90" role="img" aria-label="Memory gauge">
+                <defs><linearGradient id="grad-ram" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8B5CF6"/><stop offset="1" stop-color="#A07DFA"/></linearGradient></defs>
+                <circle cx="60" cy="60" r="52" fill="none" stroke-width="9" class="stroke-midnight-200 dark:stroke-white/10"/>
+                <circle id="ring-ram" cx="60" cy="60" r="52" fill="none" stroke="url(#grad-ram)" stroke-width="9" stroke-linecap="round" stroke-dasharray="326.73" stroke-dashoffset="104.55" class="transition-[stroke-dashoffset] duration-700 ease-out-expo"/>
+              </svg>
+              <div class="absolute inset-0 grid place-items-center"><p id="val-ram" class="text-2xl font-bold tabular text-midnight-900 dark:text-white">68<span class="text-sm font-semibold text-midnight-500">%</span></p></div>
+            </div>
+            <p class="mt-3 text-sm font-semibold text-midnight-900 dark:text-white">Memory</p>
+            <p id="sub-ram" class="text-xs text-midnight-500">10.9 of 16 GB</p>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <div class="relative h-32 w-32">
+              <svg viewBox="0 0 120 120" class="h-full w-full -rotate-90" role="img" aria-label="API response gauge">
+                <defs><linearGradient id="grad-api" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset="1" stop-color="#10B981"/></linearGradient></defs>
+                <circle cx="60" cy="60" r="52" fill="none" stroke-width="9" class="stroke-midnight-200 dark:stroke-white/10"/>
+                <circle id="ring-api" cx="60" cy="60" r="52" fill="none" stroke="url(#grad-api)" stroke-width="9" stroke-linecap="round" stroke-dasharray="326.73" stroke-dashoffset="205.84" class="transition-[stroke-dashoffset] duration-700 ease-out-expo"/>
+              </svg>
+              <div class="absolute inset-0 grid place-items-center"><p id="val-api" class="text-2xl font-bold tabular text-midnight-900 dark:text-white">186<span class="text-sm font-semibold text-midnight-500">ms</span></p></div>
+            </div>
+            <p class="mt-3 text-sm font-semibold text-midnight-900 dark:text-white">API response</p>
+            <p id="sub-api" class="text-xs text-midnight-500">p95 in the last minute</p>
+          </div>
+          <!-- API throughput panel -->
+          <div class="rounded-2xl bg-midnight-50 p-4 ring-1 ring-midnight-200 dark:bg-midnight-900/50 dark:ring-white/5 sm:col-span-3 lg:col-span-2">
+            <div class="flex items-center justify-between"><p class="text-sm font-semibold text-midnight-900 dark:text-white">Response time, last 60 s</p><span id="spark-now" class="text-xs font-medium text-volt-700 tabular dark:text-volt-400">186 ms</span></div>
+            <svg viewBox="0 0 240 64" preserveAspectRatio="none" class="mt-3 h-16 w-full" role="img" aria-label="Response time sparkline">
+              <defs><linearGradient id="spark-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#10B981" stop-opacity=".35"/><stop offset="1" stop-color="#10B981" stop-opacity="0"/></linearGradient></defs>
+              <path id="spark-area" d="M0.0 44.5 L8.3 46.6 L16.6 43.9 L24.8 41.8 L33.1 45.3 L41.4 46.0 L49.7 42.8 L57.9 40.4 L66.2 43.9 L74.5 45.0 L82.8 46.7 L91.0 47.2 L99.3 45.6 L107.6 43.2 L115.9 41.0 L124.1 44.2 L132.4 45.1 L140.7 45.8 L149.0 44.7 L157.2 43.7 L165.5 42.3 L173.8 44.4 L182.1 45.4 L190.3 46.3 L198.6 45.0 L206.9 44.1 L215.2 43.1 L223.4 44.8 L231.7 45.6 L240.0 44.5 L240 64 L0 64Z" fill="url(#spark-fill)"/>
+              <polyline id="spark-line" points="0.0,44.5 8.3,46.6 16.6,43.9 24.8,41.8 33.1,45.3 41.4,46.0 49.7,42.8 57.9,40.4 66.2,43.9 74.5,45.0 82.8,46.7 91.0,47.2 99.3,45.6 107.6,43.2 115.9,41.0 124.1,44.2 132.4,45.1 140.7,45.8 149.0,44.7 157.2,43.7 165.5,42.3 173.8,44.4 182.1,45.4 190.3,46.3 198.6,45.0 206.9,44.1 215.2,43.1 223.4,44.8 231.7,45.6 240.0,44.5" fill="none" stroke="#34D399" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+            </svg>
+            <dl class="mt-4 grid grid-cols-3 gap-3 text-center">
+              <div><dd id="stat-rpm" class="text-lg font-bold tabular text-midnight-900 dark:text-white">1,840</dd><dt class="text-[11px] text-midnight-500">Requests / min</dt></div>
+              <div><dd id="stat-err" class="text-lg font-bold tabular text-midnight-900 dark:text-white">0.12%</dd><dt class="text-[11px] text-midnight-500">Error rate</dt></div>
+              <div><dd class="text-lg font-bold tabular text-midnight-900 dark:text-white">99.98%</dd><dt class="text-[11px] text-midnight-500">30-day uptime</dt></div>
+            </dl>
+          </div>
+        </div>
+      </section>
+      <!-- END OF SYSTEM MONITOR -->
+
+      <!-- ==================== ANALYTICS GRID: REVENUE TREND + TRAFFIC SOURCES ==================== -->
+      <section class="grid gap-6 xl:grid-cols-3" aria-label="Charts">
+        <div class="vx-card p-5 backdrop-blur xl:col-span-2">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div><h2 class="font-semibold text-midnight-900 dark:text-white">Analytics Overview</h2><p class="text-sm text-midnight-500">Revenue vs. last year</p></div>
+            <div class="flex gap-1 rounded-xl bg-midnight-100 p-1 text-xs font-medium dark:bg-midnight-900/70">
+              <button type="button" class="rounded-lg px-3 py-1.5 text-midnight-600 transition hover:text-midnight-900 dark:text-midnight-400 dark:hover:text-white">Week</button>
+              <button type="button" class="rounded-lg bg-volt-600 px-3 py-1.5 text-white shadow">Month</button>
+              <button type="button" class="rounded-lg px-3 py-1.5 text-midnight-600 transition hover:text-midnight-900 dark:text-midnight-400 dark:hover:text-white">Year</button>
+            </div>
+          </div>
+          <svg class="mt-6 h-64 w-full" viewBox="0 0 600 240" preserveAspectRatio="none" role="img" aria-label="Revenue line chart">
+            <defs><linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#10B981" stop-opacity=".4"/><stop offset="1" stop-color="#10B981" stop-opacity="0"/></linearGradient></defs>
+            <path d="M0 50H600" stroke="currentColor" class="text-midnight-200 dark:text-white/5"/><path d="M0 100H600" stroke="currentColor" class="text-midnight-200 dark:text-white/5"/><path d="M0 150H600" stroke="currentColor" class="text-midnight-200 dark:text-white/5"/><path d="M0 200H600" stroke="currentColor" class="text-midnight-200 dark:text-white/5"/>
+            <path d="M0 170C50 150 80 160 130 125S210 135 260 95 350 115 410 65 520 75 600 30V200H0Z" fill="url(#area)"/>
+            <path d="M0 170C50 150 80 160 130 125S210 135 260 95 350 115 410 65 520 75 600 30" fill="none" stroke="#34D399" stroke-width="3" stroke-linecap="round"/>
+            <path d="M0 185C60 175 100 180 150 160S240 165 300 140 400 150 460 120 540 125 600 100" fill="none" stroke="#5F6E89" stroke-width="2" stroke-dasharray="6 6" stroke-linecap="round"/>
+            <text x="25" y="232" class="fill-midnight-500 text-[11px]" text-anchor="middle">Jan</text><text x="80" y="232" class="fill-midnight-500 text-[11px]" text-anchor="middle">Feb</text><text x="135" y="232" class="fill-midnight-500 text-[11px]" text-anchor="middle">Mar</text><text x="190" y="232" class="fill-midnight-500 text-[11px]" text-anchor="middle">Apr</text><text x="245" y="232" class="fill-midnight-500 text-[11px]" text-anchor="middle">May</text><text x="300" y="232" class="fill-midnight-500 text-[11px]" text-anchor="middle">Jun</text><text x="355" y="232" class="fill-midnight-500 text-[11px]" text-anchor="middle">Jul</text><text x="410" y="232" class="fill-midnight-500 text-[11px]" text-anchor="middle">Aug</text><text x="465" y="232" class="fill-midnight-500 text-[11px]" text-anchor="middle">Sep</text><text x="520" y="232" class="fill-midnight-500 text-[11px]" text-anchor="middle">Oct</text><text x="575" y="232" class="fill-midnight-500 text-[11px]" text-anchor="middle">Nov</text>
+          </svg>
+          <div class="mt-4 flex gap-5 text-xs text-midnight-600 dark:text-midnight-400"><span class="flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-full bg-volt-400"></span>This year</span><span class="flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-full bg-midnight-500"></span>Last year</span></div>
+        </div>
+        <div class="vx-card p-5 backdrop-blur">
+          <h2 class="font-semibold text-midnight-900 dark:text-white">Traffic Sources</h2><p class="text-sm text-midnight-500">Where visitors come from</p>
+          <div class="relative mx-auto mt-6 h-44 w-44">
+            <svg viewBox="0 0 36 36" class="h-full w-full -rotate-90" role="img" aria-label="Traffic sources donut chart">
+              <circle cx="18" cy="18" r="15.9155" fill="none" class="stroke-midnight-200 dark:stroke-midnight-700/50" stroke-width="4"/><circle cx="18" cy="18" r="15.9155" fill="none" class="stroke-volt-400" stroke-width="4" stroke-dasharray="44 56" stroke-dashoffset="0"/><circle cx="18" cy="18" r="15.9155" fill="none" class="stroke-cyan-400" stroke-width="4" stroke-dasharray="29 71" stroke-dashoffset="-45"/><circle cx="18" cy="18" r="15.9155" fill="none" class="stroke-cyber-400" stroke-width="4" stroke-dasharray="14 86" stroke-dashoffset="-75"/><circle cx="18" cy="18" r="15.9155" fill="none" class="stroke-amber-400" stroke-width="4" stroke-dasharray="9 91" stroke-dashoffset="-90"/>
+            </svg>
+            <div class="absolute inset-0 grid place-items-center text-center"><div><p class="text-2xl font-bold text-midnight-900 dark:text-white">24.8k</p><p class="text-xs text-midnight-500">Visitors</p></div></div>
+          </div>
+          <ul class="mt-6 space-y-3"><li class="flex items-center justify-between text-sm"><span class="flex items-center gap-2 text-midnight-600 dark:text-midnight-300"><span class="h-2.5 w-2.5 rounded-full bg-volt-400"></span>Direct</span><span class="font-semibold tabular text-midnight-900 dark:text-white">45%</span></li><li class="flex items-center justify-between text-sm"><span class="flex items-center gap-2 text-midnight-600 dark:text-midnight-300"><span class="h-2.5 w-2.5 rounded-full bg-cyan-400"></span>Organic</span><span class="font-semibold tabular text-midnight-900 dark:text-white">30%</span></li><li class="flex items-center justify-between text-sm"><span class="flex items-center gap-2 text-midnight-600 dark:text-midnight-300"><span class="h-2.5 w-2.5 rounded-full bg-cyber-400"></span>Social</span><span class="font-semibold tabular text-midnight-900 dark:text-white">15%</span></li><li class="flex items-center justify-between text-sm"><span class="flex items-center gap-2 text-midnight-600 dark:text-midnight-300"><span class="h-2.5 w-2.5 rounded-full bg-amber-400"></span>Referral</span><span class="font-semibold tabular text-midnight-900 dark:text-white">10%</span></li></ul>
+        </div>
+      </section>
+      <!-- END OF ANALYTICS GRID CONTAINER -->
+
+      <!-- ==================== OPERATIONS ROW: TRANSACTIONS + ACTIVITY (left) / API KEYS (right) ==================== -->
+      <section class="grid items-start gap-6 xl:grid-cols-3" aria-label="Operations">
+        <div class="space-y-6 xl:col-span-2">
+        <!-- ---------- Recent transactions ---------- -->
+        <div class="overflow-hidden vx-card backdrop-blur">
+          <div class="flex items-center justify-between p-5">
+            <div><h2 class="font-semibold text-midnight-900 dark:text-white">Recent Transactions</h2><p class="text-sm text-midnight-500">Latest customer activity</p></div>
+            <a href="users.html" class="rounded-lg px-3 py-1.5 text-sm font-medium text-volt-700 transition hover:bg-volt-500/10 dark:text-volt-400">View all</a>
+          </div>
+          <div class="overflow-x-auto"><table class="w-full min-w-[640px] text-left text-sm">
+            <thead class="vx-thead"><tr><th class="px-5 py-3 font-medium">User</th><th class="px-5 py-3 font-medium">Status</th><th class="px-5 py-3 font-medium">Date</th><th class="px-5 py-3 text-right font-medium">Amount</th></tr></thead>
+            <tbody class="divide-y divide-midnight-200 dark:divide-white/5">
+              <tr class="vx-row">
+                <td class="px-5 py-4"><div class="flex items-center gap-3"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gradient-to-br from-volt-600 to-cyber-600 text-xs font-bold text-white">OM</span>
+                  <div><p class="font-medium text-midnight-900 dark:text-white">Olivia Martin</p><p class="text-xs text-midnight-500">olivia@example.com</p></div></div></td>
+                <td class="px-5 py-4"><span class="vx-pill bg-volt-500/10 text-volt-700 ring-volt-500/20 dark:text-volt-400"><span class="h-1.5 w-1.5 rounded-full bg-volt-500"></span>Success</span></td>
+                <td class="px-5 py-4 text-midnight-600 dark:text-midnight-400">Nov 1, 2026</td>
+                <td class="px-5 py-4 text-right font-semibold tabular text-midnight-900 dark:text-white">+$1,999.00</td>
+              </tr>
+              <tr class="vx-row">
+                <td class="px-5 py-4"><div class="flex items-center gap-3"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gradient-to-br from-cyan-600 to-volt-600 text-xs font-bold text-white">JL</span>
+                  <div><p class="font-medium text-midnight-900 dark:text-white">Jackson Lee</p><p class="text-xs text-midnight-500">jackson@example.com</p></div></div></td>
+                <td class="px-5 py-4"><span class="vx-pill bg-volt-500/10 text-volt-700 ring-volt-500/20 dark:text-volt-400"><span class="h-1.5 w-1.5 rounded-full bg-volt-500"></span>Success</span></td>
+                <td class="px-5 py-4 text-midnight-600 dark:text-midnight-400">Nov 1, 2026</td>
+                <td class="px-5 py-4 text-right font-semibold tabular text-midnight-900 dark:text-white">+$39.00</td>
+              </tr>
+              <tr class="vx-row">
+                <td class="px-5 py-4"><div class="flex items-center gap-3"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gradient-to-br from-rose-500 to-orange-500 text-xs font-bold text-white">IN</span>
+                  <div><p class="font-medium text-midnight-900 dark:text-white">Isabella Nguyen</p><p class="text-xs text-midnight-500">isabella@example.com</p></div></div></td>
+                <td class="px-5 py-4"><span class="vx-pill bg-amber-500/10 text-amber-700 ring-amber-500/20 dark:text-amber-400"><span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span>Pending</span></td>
+                <td class="px-5 py-4 text-midnight-600 dark:text-midnight-400">Oct 31, 2026</td>
+                <td class="px-5 py-4 text-right font-semibold tabular text-midnight-900 dark:text-white">+$299.00</td>
+              </tr>
+              <tr class="vx-row">
+                <td class="px-5 py-4"><div class="flex items-center gap-3"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gradient-to-br from-amber-500 to-rose-500 text-xs font-bold text-white">WK</span>
+                  <div><p class="font-medium text-midnight-900 dark:text-white">William Kim</p><p class="text-xs text-midnight-500">will@example.com</p></div></div></td>
+                <td class="px-5 py-4"><span class="vx-pill bg-rose-500/10 text-rose-700 ring-rose-500/20 dark:text-rose-400"><span class="h-1.5 w-1.5 rounded-full bg-rose-500"></span>Failed</span></td>
+                <td class="px-5 py-4 text-midnight-600 dark:text-midnight-400">Oct 30, 2026</td>
+                <td class="px-5 py-4 text-right font-semibold tabular text-midnight-900 dark:text-white">+$99.00</td>
+              </tr>
+              <tr class="vx-row">
+                <td class="px-5 py-4"><div class="flex items-center gap-3"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gradient-to-br from-cyber-600 to-fuchsia-600 text-xs font-bold text-white">SD</span>
+                  <div><p class="font-medium text-midnight-900 dark:text-white">Sofia Davis</p><p class="text-xs text-midnight-500">sofia@example.com</p></div></div></td>
+                <td class="px-5 py-4"><span class="vx-pill bg-volt-500/10 text-volt-700 ring-volt-500/20 dark:text-volt-400"><span class="h-1.5 w-1.5 rounded-full bg-volt-500"></span>Success</span></td>
+                <td class="px-5 py-4 text-midnight-600 dark:text-midnight-400">Oct 29, 2026</td>
+                <td class="px-5 py-4 text-right font-semibold tabular text-midnight-900 dark:text-white">+$450.00</td>
+              </tr>
+              <tr class="vx-row">
+                <td class="px-5 py-4"><div class="flex items-center gap-3"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gradient-to-br from-cyan-600 to-cyber-600 text-xs font-bold text-white">LC</span>
+                  <div><p class="font-medium text-midnight-900 dark:text-white">Liam Carter</p><p class="text-xs text-midnight-500">liam@example.com</p></div></div></td>
+                <td class="px-5 py-4"><span class="vx-pill bg-amber-500/10 text-amber-700 ring-amber-500/20 dark:text-amber-400"><span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span>Pending</span></td>
+                <td class="px-5 py-4 text-midnight-600 dark:text-midnight-400">Oct 28, 2026</td>
+                <td class="px-5 py-4 text-right font-semibold tabular text-midnight-900 dark:text-white">+$129.00</td>
+              </tr>
+            </tbody>
+          </table></div>
+        </div>
+        <!-- END OF TRANSACTIONS TABLE -->
+
+        <!-- ---------- Recent system activity feed (staggered timeline) ---------- -->
+        <div class="vx-card p-5 backdrop-blur">
+          <div class="flex items-center justify-between"><div><h2 class="font-semibold text-midnight-900 dark:text-white">Recent System Activity</h2><p class="text-sm text-midnight-500">What your team and infrastructure did today</p></div>
+            <a href="analytics.html" class="rounded-lg px-3 py-1.5 text-sm font-medium text-volt-700 transition hover:bg-volt-500/10 dark:text-volt-400">Full log</a></div>
+          <ol class="mt-6 ml-2 border-l border-midnight-200 dark:border-white/10">
+            <li class="relative animate-slide-up pb-6 pl-8 last:pb-0 [animation-delay:0ms]">
+              <span class="absolute -left-[7px] top-1.5 grid h-3.5 w-3.5 place-items-center rounded-full bg-white ring-2 ring-midnight-200 dark:bg-midnight-900 dark:ring-white/15"><span class="h-2 w-2 rounded-full bg-volt-500 animate-neon-pulse"></span></span>
+              <div class="flex flex-wrap items-start justify-between gap-x-4 gap-y-1">
+                <p class="max-w-md text-sm leading-relaxed text-midnight-600 dark:text-midnight-400"><b class="font-semibold text-midnight-900 dark:text-white">Maya Chen</b> deployed model <code class="rounded bg-midnight-100 px-1.5 py-0.5 font-mono text-xs dark:bg-white/10">v3.2</code> to production</p>
+                <div class="flex items-center gap-2"><span class="rounded-full px-2 py-0.5 text-[11px] font-semibold bg-volt-500/10 text-volt-700 dark:text-volt-400">Deploy</span><time class="whitespace-nowrap text-xs text-midnight-500">4 min ago</time></div>
+              </div>
+            </li>
+            <li class="relative animate-slide-up pb-6 pl-8 last:pb-0 [animation-delay:90ms]">
+              <span class="absolute -left-[7px] top-1.5 grid h-3.5 w-3.5 place-items-center rounded-full bg-white ring-2 ring-midnight-200 dark:bg-midnight-900 dark:ring-white/15"><span class="h-2 w-2 rounded-full bg-cyber-500"></span></span>
+              <div class="flex flex-wrap items-start justify-between gap-x-4 gap-y-1">
+                <p class="max-w-md text-sm leading-relaxed text-midnight-600 dark:text-midnight-400">Auto-scaling added <b class="font-semibold text-midnight-900 dark:text-white">2 GPU nodes</b> in us-east-1 after traffic spiked</p>
+                <div class="flex items-center gap-2"><span class="rounded-full px-2 py-0.5 text-[11px] font-semibold bg-cyber-500/10 text-cyber-700 dark:text-cyber-400">Infrastructure</span><time class="whitespace-nowrap text-xs text-midnight-500">17 min ago</time></div>
+              </div>
+            </li>
+            <li class="relative animate-slide-up pb-6 pl-8 last:pb-0 [animation-delay:180ms]">
+              <span class="absolute -left-[7px] top-1.5 grid h-3.5 w-3.5 place-items-center rounded-full bg-white ring-2 ring-midnight-200 dark:bg-midnight-900 dark:ring-white/15"><span class="h-2 w-2 rounded-full bg-cyan-500"></span></span>
+              <div class="flex flex-wrap items-start justify-between gap-x-4 gap-y-1">
+                <p class="max-w-md text-sm leading-relaxed text-midnight-600 dark:text-midnight-400"><b class="font-semibold text-midnight-900 dark:text-white">Daniel Okafor</b> invited 3 teammates to the Growth workspace</p>
+                <div class="flex items-center gap-2"><span class="rounded-full px-2 py-0.5 text-[11px] font-semibold bg-cyan-500/10 text-cyan-700 dark:text-cyan-400">Team</span><time class="whitespace-nowrap text-xs text-midnight-500">1 hour ago</time></div>
+              </div>
+            </li>
+            <li class="relative animate-slide-up pb-6 pl-8 last:pb-0 [animation-delay:270ms]">
+              <span class="absolute -left-[7px] top-1.5 grid h-3.5 w-3.5 place-items-center rounded-full bg-white ring-2 ring-midnight-200 dark:bg-midnight-900 dark:ring-white/15"><span class="h-2 w-2 rounded-full bg-amber-500"></span></span>
+              <div class="flex flex-wrap items-start justify-between gap-x-4 gap-y-1">
+                <p class="max-w-md text-sm leading-relaxed text-midnight-600 dark:text-midnight-400">Latency alert on <code class="rounded bg-midnight-100 px-1.5 py-0.5 font-mono text-xs dark:bg-white/10">/v1/embeddings</code> cleared after 6 minutes</p>
+                <div class="flex items-center gap-2"><span class="rounded-full px-2 py-0.5 text-[11px] font-semibold bg-amber-500/10 text-amber-700 dark:text-amber-400">Resolved</span><time class="whitespace-nowrap text-xs text-midnight-500">2 hours ago</time></div>
+              </div>
+            </li>
+            <li class="relative animate-slide-up pb-6 pl-8 last:pb-0 [animation-delay:360ms]">
+              <span class="absolute -left-[7px] top-1.5 grid h-3.5 w-3.5 place-items-center rounded-full bg-white ring-2 ring-midnight-200 dark:bg-midnight-900 dark:ring-white/15"><span class="h-2 w-2 rounded-full bg-volt-500"></span></span>
+              <div class="flex flex-wrap items-start justify-between gap-x-4 gap-y-1">
+                <p class="max-w-md text-sm leading-relaxed text-midnight-600 dark:text-midnight-400">Nightly backup finished in 4m 12s (18.4 GB)</p>
+                <div class="flex items-center gap-2"><span class="rounded-full px-2 py-0.5 text-[11px] font-semibold bg-volt-500/10 text-volt-700 dark:text-volt-400">Backup</span><time class="whitespace-nowrap text-xs text-midnight-500">5 hours ago</time></div>
+              </div>
+            </li>
+            <li class="relative animate-slide-up pb-6 pl-8 last:pb-0 [animation-delay:450ms]">
+              <span class="absolute -left-[7px] top-1.5 grid h-3.5 w-3.5 place-items-center rounded-full bg-white ring-2 ring-midnight-200 dark:bg-midnight-900 dark:ring-white/15"><span class="h-2 w-2 rounded-full bg-rose-500"></span></span>
+              <div class="flex flex-wrap items-start justify-between gap-x-4 gap-y-1">
+                <p class="max-w-md text-sm leading-relaxed text-midnight-600 dark:text-midnight-400"><b class="font-semibold text-midnight-900 dark:text-white">Priya Nair</b> rotated the Stripe webhook secret</p>
+                <div class="flex items-center gap-2"><span class="rounded-full px-2 py-0.5 text-[11px] font-semibold bg-rose-500/10 text-rose-700 dark:text-rose-400">Security</span><time class="whitespace-nowrap text-xs text-midnight-500">Yesterday</time></div>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <!-- END OF ACTIVITY FEED -->
+        </div>
+        <div class="space-y-6">
+        <!-- ---------- Quick API key generator & scope selector ---------- -->
+        <div id="key-widget" class="vx-card p-5 backdrop-blur">
+          <div class="flex items-start gap-3"><span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-cyber-500/10 text-cyber-700 dark:text-cyber-400"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="15.5" r="4.5"/><path d="m10.7 12.3 9.8-9.8M16 7l3 3"/></svg></span>
+            <div><h2 class="font-semibold text-midnight-900 dark:text-white">Quick API Key</h2><p class="text-sm text-midnight-500">Create a scoped key for an integration.</p></div></div>
+          <form id="key-form" class="mt-5 space-y-4" novalidate>
+            <div><label for="key-name" class="vx-label">Key name</label><input id="key-name" type="text" maxlength="40" placeholder="e.g. Production backend" class="vx-input" /></div>
+            <div class="grid grid-cols-2 gap-3">
+              <div><span class="vx-label">Environment</span>
+                <div class="flex rounded-xl border border-midnight-200 bg-midnight-50 p-1 dark:border-white/10 dark:bg-midnight-900/60" role="radiogroup" aria-label="Environment">
+                  <label class="flex-1 cursor-pointer text-center"><input type="radio" name="key-env" value="test" class="peer sr-only" checked /><span class="block rounded-lg py-1.5 text-xs font-semibold text-midnight-600 transition-all duration-300 peer-checked:bg-volt-600 peer-checked:text-white peer-checked:shadow dark:text-midnight-400">Test</span></label>
+                  <label class="flex-1 cursor-pointer text-center"><input type="radio" name="key-env" value="live" class="peer sr-only" /><span class="block rounded-lg py-1.5 text-xs font-semibold text-midnight-600 transition-all duration-300 peer-checked:bg-cyber-600 peer-checked:text-white peer-checked:shadow dark:text-midnight-400">Live</span></label>
+                </div></div>
+              <div><label for="key-expiry" class="vx-label">Expires</label><select id="key-expiry" class="vx-input !py-2"><option>30 days</option><option>90 days</option><option>1 year</option><option>Never</option></select></div>
+            </div>
+            <fieldset><legend class="vx-label">Scopes</legend><div class="grid grid-cols-2 gap-2">
+              <label class="cursor-pointer"><input type="checkbox" name="key-scope" value="read:analytics" class="peer sr-only" checked />
+                <span class="flex items-center gap-2 rounded-xl border border-midnight-200 px-3 py-2 text-xs font-medium text-midnight-700 transition-all duration-300 peer-checked:border-volt-500 peer-checked:bg-volt-500/10 peer-checked:text-volt-700 peer-focus-visible:ring-2 peer-focus-visible:ring-volt-400 dark:border-white/10 dark:text-midnight-300 dark:peer-checked:text-volt-400"><span class="grid h-4 w-4 shrink-0 place-items-center rounded border border-midnight-300 text-transparent transition-all duration-300 dark:border-midnight-600 [input:checked~span_&]:border-volt-500 [input:checked~span_&]:bg-volt-500 [input:checked~span_&]:text-white"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg></span>Read analytics</span></label>
+              <label class="cursor-pointer"><input type="checkbox" name="key-scope" value="write:projects" class="peer sr-only" checked />
+                <span class="flex items-center gap-2 rounded-xl border border-midnight-200 px-3 py-2 text-xs font-medium text-midnight-700 transition-all duration-300 peer-checked:border-volt-500 peer-checked:bg-volt-500/10 peer-checked:text-volt-700 peer-focus-visible:ring-2 peer-focus-visible:ring-volt-400 dark:border-white/10 dark:text-midnight-300 dark:peer-checked:text-volt-400"><span class="grid h-4 w-4 shrink-0 place-items-center rounded border border-midnight-300 text-transparent transition-all duration-300 dark:border-midnight-600 [input:checked~span_&]:border-volt-500 [input:checked~span_&]:bg-volt-500 [input:checked~span_&]:text-white"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg></span>Write projects</span></label>
+              <label class="cursor-pointer"><input type="checkbox" name="key-scope" value="manage:users" class="peer sr-only" />
+                <span class="flex items-center gap-2 rounded-xl border border-midnight-200 px-3 py-2 text-xs font-medium text-midnight-700 transition-all duration-300 peer-checked:border-volt-500 peer-checked:bg-volt-500/10 peer-checked:text-volt-700 peer-focus-visible:ring-2 peer-focus-visible:ring-volt-400 dark:border-white/10 dark:text-midnight-300 dark:peer-checked:text-volt-400"><span class="grid h-4 w-4 shrink-0 place-items-center rounded border border-midnight-300 text-transparent transition-all duration-300 dark:border-midnight-600 [input:checked~span_&]:border-volt-500 [input:checked~span_&]:bg-volt-500 [input:checked~span_&]:text-white"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg></span>Manage users</span></label>
+              <label class="cursor-pointer"><input type="checkbox" name="key-scope" value="read:billing" class="peer sr-only" />
+                <span class="flex items-center gap-2 rounded-xl border border-midnight-200 px-3 py-2 text-xs font-medium text-midnight-700 transition-all duration-300 peer-checked:border-volt-500 peer-checked:bg-volt-500/10 peer-checked:text-volt-700 peer-focus-visible:ring-2 peer-focus-visible:ring-volt-400 dark:border-white/10 dark:text-midnight-300 dark:peer-checked:text-volt-400"><span class="grid h-4 w-4 shrink-0 place-items-center rounded border border-midnight-300 text-transparent transition-all duration-300 dark:border-midnight-600 [input:checked~span_&]:border-volt-500 [input:checked~span_&]:bg-volt-500 [input:checked~span_&]:text-white"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg></span>Read billing</span></label>
+              <label class="cursor-pointer"><input type="checkbox" name="key-scope" value="ai:inference" class="peer sr-only" />
+                <span class="flex items-center gap-2 rounded-xl border border-midnight-200 px-3 py-2 text-xs font-medium text-midnight-700 transition-all duration-300 peer-checked:border-volt-500 peer-checked:bg-volt-500/10 peer-checked:text-volt-700 peer-focus-visible:ring-2 peer-focus-visible:ring-volt-400 dark:border-white/10 dark:text-midnight-300 dark:peer-checked:text-volt-400"><span class="grid h-4 w-4 shrink-0 place-items-center rounded border border-midnight-300 text-transparent transition-all duration-300 dark:border-midnight-600 [input:checked~span_&]:border-volt-500 [input:checked~span_&]:bg-volt-500 [input:checked~span_&]:text-white"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg></span>AI inference</span></label>
+              <label class="cursor-pointer"><input type="checkbox" name="key-scope" value="webhooks" class="peer sr-only" />
+                <span class="flex items-center gap-2 rounded-xl border border-midnight-200 px-3 py-2 text-xs font-medium text-midnight-700 transition-all duration-300 peer-checked:border-volt-500 peer-checked:bg-volt-500/10 peer-checked:text-volt-700 peer-focus-visible:ring-2 peer-focus-visible:ring-volt-400 dark:border-white/10 dark:text-midnight-300 dark:peer-checked:text-volt-400"><span class="grid h-4 w-4 shrink-0 place-items-center rounded border border-midnight-300 text-transparent transition-all duration-300 dark:border-midnight-600 [input:checked~span_&]:border-volt-500 [input:checked~span_&]:bg-volt-500 [input:checked~span_&]:text-white"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg></span>Webhooks</span></label>
+            </div></fieldset>
+            <p id="key-error" class="hidden text-sm font-medium text-rose-600 dark:text-rose-400" role="alert"></p>
+            <button type="submit" class="vx-btn-primary w-full"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="15.5" r="4.5"/><path d="m10.7 12.3 9.8-9.8M16 7l3 3"/></svg>Generate key</button>
+          </form>
+          <!-- Result panel: shown after a key is generated -->
+          <div id="key-result" class="mt-5 hidden animate-slide-up rounded-2xl border border-volt-500/30 bg-volt-500/5 p-4" aria-live="polite">
+            <p class="text-xs font-semibold text-volt-700 dark:text-volt-400">New key created. Copy it now: this demo shows it only once.</p>
+            <div class="mt-3 flex items-center gap-2">
+              <code id="key-value" class="min-w-0 flex-1 truncate rounded-lg bg-white px-3 py-2.5 font-mono text-xs text-midnight-800 ring-1 ring-midnight-200 dark:bg-midnight-950 dark:text-midnight-200 dark:ring-white/10"></code>
+              <button id="key-toggle" type="button" class="vx-btn-icon !h-9 !w-9 shrink-0" aria-label="Show key"><span class="eye-on"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span><span class="eye-off hidden"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.9 17.9A10.7 10.7 0 0 1 12 19c-6.4 0-10-7-10-7a18 18 0 0 1 5.1-5.9M9.9 4.2A9.7 9.7 0 0 1 12 4c6.4 0 10 7 10 7a18 18 0 0 1-2.2 3.2M1 1l22 22"/></svg></span></button>
+              <button id="key-copy" type="button" class="inline-flex h-9 shrink-0 items-center gap-1.5 rounded-xl bg-volt-600 px-3 text-xs font-semibold text-white transition-all duration-300 hover:bg-volt-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-volt-300"><span class="copy-icon"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span><span class="copy-done hidden"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg></span><span class="copy-label">Copy</span></button>
+            </div>
+          </div>
+          <!-- Existing keys -->
+          <div class="mt-6 border-t border-midnight-200 pt-5 dark:border-white/10">
+            <h3 class="text-sm font-semibold text-midnight-900 dark:text-white">Active keys</h3>
+            <ul id="key-list" class="mt-3 space-y-2"></ul>
+          </div>
+        </div>
+        <!-- END OF API KEY GENERATOR -->
+        </div>
+      </section>
+      <!-- END OF OPERATIONS ROW -->
+
+    </main>
+    <!-- END OF PAGE CONTENT: DASHBOARD -->
+
+    <!-- ==================== FOOTER ==================== -->
+
+    <footer class="border-t border-midnight-200 dark:border-white/5 px-6 py-5 text-center text-xs text-midnight-500">&copy; <span id="year">2026</span> VortexAI. All rights reserved.</footer>
+  </div>
+
+  <!-- ==================== LOGOUT CONFIRMATION MODAL ====================
+       Opened by any element with the data-logout-open attribute (profile menu + sidebar). Logic: assets/js/app.js -->
+  <div id="logout-modal" class="invisible fixed inset-0 z-[60] flex items-center justify-center p-4" role="alertdialog" aria-modal="true" aria-hidden="true" aria-labelledby="logout-title" aria-describedby="logout-desc">
+    <div id="logout-backdrop" data-logout-close class="absolute inset-0 bg-midnight-900/60 opacity-0 backdrop-blur-sm transition-opacity duration-200"></div>
+    <div id="logout-panel" class="relative w-full max-w-md translate-y-4 scale-95 overflow-hidden rounded-3xl border border-midnight-200 bg-white p-6 text-center opacity-0 shadow-2xl transition-all duration-200 dark:border-white/10 dark:bg-midnight-900 sm:p-8">
+      <div class="pointer-events-none absolute -top-16 left-1/2 h-40 w-40 -translate-x-1/2 rounded-full bg-rose-500/20 blur-3xl"></div>
+      <span class="relative mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-rose-500 to-orange-500 text-white shadow-lg shadow-rose-500/30"><svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg></span>
+      <h2 id="logout-title" class="relative mt-5 text-xl font-bold text-midnight-900 dark:text-white">Are you sure you want to log out?</h2>
+      <p id="logout-desc" class="relative mt-2 text-sm text-midnight-500">You will need to sign in again to access your dashboard.</p>
+      <div class="relative mt-7 flex flex-col-reverse gap-3 sm:flex-row">
+        <button id="logout-cancel" type="button" data-logout-close class="inline-flex flex-1 items-center justify-center rounded-xl border border-midnight-200 px-4 py-2.5 text-sm font-medium text-midnight-700 transition-all duration-300 hover:bg-midnight-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-volt-400 dark:border-white/10 dark:text-midnight-300 dark:hover:bg-white/5">Cancel</button>
+        <a href="login.html" class="inline-flex flex-1 items-center justify-center whitespace-nowrap rounded-xl bg-gradient-to-r from-rose-500 to-red-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-rose-500/30 transition-all duration-300 hover:scale-105 hover:shadow-rose-500/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-300">Confirm Logout</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPTS (all behaviour lives in assets/js/app.js) ==================== -->
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

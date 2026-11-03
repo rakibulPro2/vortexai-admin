@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign in | VortexAI</title>
+  <meta name="description" content="VortexAI: responsive HTML and Tailwind CSS admin dashboard template. Sign in page." />
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <!-- Applies the saved light/dark theme before the page paints -->
+  <script src="assets/js/theme-init.js"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-midnight-50 dark:bg-midnight-950 font-sans text-midnight-700 dark:text-midnight-300 antialiased selection:bg-volt-500/40 selection:text-white">
+  <div class="flex min-h-screen">
+    <!-- LEFT: futuristic AI panel (always dark, hidden on small screens) -->
+    <div class="relative hidden overflow-hidden bg-gradient-to-br from-midnight-950 via-volt-950 to-cyber-950 lg:sticky lg:top-0 lg:flex lg:h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:p-10 xl:w-[55%] xl:p-14">
+      <div class="pointer-events-none absolute -left-24 -top-24 h-96 w-96 rounded-full bg-cyber-600/30 blur-3xl"></div>
+      <div class="pointer-events-none absolute -bottom-32 -right-16 h-96 w-96 rounded-full bg-cyan-500/20 blur-3xl"></div>
+      <a href="index.html" class="relative flex w-fit items-center gap-2.5 text-xl font-bold text-white">
+        <span class="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-volt-600 to-cyber-500 shadow-lg shadow-volt-500/30"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 0 1 9 9 6 6 0 0 1-6 6 3.5 3.5 0 0 1-3.5-3.5 2 2 0 0 1 2-2"/><path d="M12 21a9 9 0 0 1-9-9 6 6 0 0 1 6-6 3.5 3.5 0 0 1 3.5 3.5 2 2 0 0 1-2 2"/></svg></span>VortexAI</a>
+
+      <div class="relative mx-auto my-6 w-full max-w-[17rem] xl:max-w-[21rem]">
+        <svg viewBox="0 0 400 400" class="h-auto w-full" role="img" aria-label="AI network illustration">
+          <defs><radialGradient id="au-core"><stop offset="0" stop-color="#A7F3D0"/><stop offset=".55" stop-color="#10B981"/><stop offset="1" stop-color="#281456" stop-opacity="0"/></radialGradient>
+            <linearGradient id="au-line" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#34D399"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs>
+          <circle cx="200" cy="200" r="70" fill="none" stroke="#fff" stroke-opacity=".14"/><circle cx="200" cy="200" r="120" fill="none" stroke="#fff" stroke-opacity=".12" stroke-dasharray="4 8"/><circle cx="200" cy="200" r="170" fill="none" stroke="#fff" stroke-opacity=".1"/>
+          <path d="M200 200L260 165" stroke="url(#au-line)" stroke-opacity=".35"/><path d="M200 200L139 235" stroke="url(#au-line)" stroke-opacity=".35"/><path d="M200 200L260 96" stroke="url(#au-line)" stroke-opacity=".35"/><path d="M200 200L179 318" stroke="url(#au-line)" stroke-opacity=".35"/><path d="M200 200L87 159" stroke="url(#au-line)" stroke-opacity=".35"/><path d="M260 165L260 96M139 235L87 159M179 318L80 320M260 96L142 40M260 165L360 258" stroke="url(#au-line)" stroke-opacity=".3"/><circle cx="200" cy="200" r="46" fill="url(#au-core)"/><circle cx="260" cy="165" r="6" fill="#34D399"/><circle cx="139" cy="235" r="6" fill="#22d3ee"/><circle cx="260" cy="96" r="6" fill="#a78bfa"/><circle cx="179" cy="318" r="6" fill="#34D399"/><circle cx="87" cy="159" r="6" fill="#22d3ee"/><circle cx="360" cy="258" r="4.5" fill="#a78bfa"/><circle cx="80" cy="320" r="4.5" fill="#34D399"/><circle cx="142" cy="40" r="4.5" fill="#22d3ee"/>
+        </svg>
+        <div class="absolute -right-2 top-4 rounded-2xl bg-white/10 px-4 py-3 ring-1 ring-white/15 backdrop-blur-md"><p class="text-lg font-bold text-white">97.4%</p><p class="text-[11px] text-midnight-300">Model accuracy</p></div>
+        <div class="absolute -left-2 bottom-6 rounded-2xl bg-white/10 px-4 py-3 ring-1 ring-white/15 backdrop-blur-md"><p class="text-lg font-bold text-emerald-300">+24%</p><p class="text-[11px] text-midnight-300">API requests</p></div>
+      </div>
+
+      <div class="relative">
+        <p class="text-sm font-semibold text-volt-300">Welcome back</p>
+        <h2 class="mt-2 text-3xl font-bold leading-tight tracking-tight text-white xl:text-4xl">Your AI-powered workspace is waiting</h2>
+        <p class="mt-3 max-w-md text-midnight-400">Pick up where you left off with live analytics, smart reports and your whole team in one place.</p>
+        <ul class="mt-7 space-y-4">
+        <li class="flex items-start gap-3"><span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white/10 text-volt-200 ring-1 ring-white/15"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg></span>
+          <div><p class="text-sm font-semibold text-white">Automated AI insights</p><p class="text-sm text-midnight-400">Reports and forecasts generated for you.</p></div></li>
+        <li class="flex items-start gap-3"><span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white/10 text-volt-200 ring-1 ring-white/15"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <div><p class="text-sm font-semibold text-white">Enterprise-grade security</p><p class="text-sm text-midnight-400">Encryption and role-based access built in.</p></div></li>
+        <li class="flex items-start gap-3"><span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white/10 text-volt-200 ring-1 ring-white/15"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <div><p class="text-sm font-semibold text-white">Made for teams</p><p class="text-sm text-midnight-400">Share dashboards and collaborate in real time.</p></div></li>
+        </ul>
+        <p class="mt-8 text-xs text-midnight-500">&copy; <span id="year">2026</span> VortexAI. All rights reserved.</p>
+      </div>
+    </div>
+    <!-- RIGHT: form -->
+    <div class="flex min-h-screen flex-1 flex-col bg-white dark:bg-midnight-950">
+      <div class="flex items-center justify-between px-5 py-4 sm:px-8">
+        <a href="index.html" class="flex items-center gap-2 text-lg font-bold text-midnight-900 dark:text-white lg:invisible">
+          <span class="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-volt-600 to-cyber-500 text-white shadow-lg shadow-volt-500/30"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 0 1 9 9 6 6 0 0 1-6 6 3.5 3.5 0 0 1-3.5-3.5 2 2 0 0 1 2-2"/><path d="M12 21a9 9 0 0 1-9-9 6 6 0 0 1 6-6 3.5 3.5 0 0 1 3.5 3.5 2 2 0 0 1-2 2"/></svg></span>VortexAI</a>
+        <button id="theme-btn" type="button" class="grid h-10 w-10 place-items-center rounded-xl text-midnight-600 ring-1 ring-midnight-900/10 transition-all duration-300 hover:bg-midnight-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-volt-400 dark:text-midnight-300 dark:ring-white/10 dark:hover:bg-white/5" aria-label="Switch between light and dark mode">
+          <svg class="hidden h-5 w-5 dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <svg class="h-5 w-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/></svg></button>
+      </div>
+      <main class="mx-auto flex w-full max-w-md flex-1 flex-col justify-center px-5 pb-10 sm:px-8">
+        <h1 class="text-3xl font-bold tracking-tight text-midnight-900 dark:text-white">Welcome back</h1>
+        <p class="mt-2 text-sm text-midnight-500">Sign in to your account to continue.</p>
+        <div class="mt-8">
+          <div class="grid gap-3 sm:grid-cols-2">
+            <button type="button" class="inline-flex w-full items-center justify-center gap-3 rounded-xl border border-midnight-200 bg-white px-4 py-3 text-sm font-semibold text-midnight-700 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-volt-400/50 hover:bg-midnight-50 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-volt-400 dark:border-white/10 dark:bg-midnight-800/60 dark:text-midnight-200 dark:shadow-none dark:hover:bg-midnight-800"><svg class="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.5a5.6 5.6 0 0 1-2.4 3.7v3h3.9c2.3-2.1 3.5-5.2 3.5-8.9z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.9-3a7.2 7.2 0 0 1-10.7-3.8H1.4v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.4 14.3a7.2 7.2 0 0 1 0-4.6V6.6H1.4a12 12 0 0 0 0 10.8z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.4.6 4.7 1.8l3.5-3.5A12 12 0 0 0 1.4 6.6l4 3.1A7.2 7.2 0 0 1 12 4.8z"/></svg>Sign in with Google</button>
+            <button type="button" class="inline-flex w-full items-center justify-center gap-3 rounded-xl border border-midnight-200 bg-white px-4 py-3 text-sm font-semibold text-midnight-700 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-volt-400/50 hover:bg-midnight-50 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-volt-400 dark:border-white/10 dark:bg-midnight-800/60 dark:text-midnight-200 dark:shadow-none dark:hover:bg-midnight-800"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>Sign in with GitHub</button>
+          </div>
+          <div class="relative my-7"><div class="absolute inset-0 flex items-center" aria-hidden="true"><div class="w-full border-t border-midnight-200 dark:border-white/10"></div></div>
+            <p class="relative mx-auto w-fit bg-white px-3 text-sm text-midnight-500 dark:bg-midnight-950">or continue with email</p></div>
+        </div>
+        <!-- Demo form: sends you to the dashboard. Connect it to your authentication backend. -->
+        <form action="index.html" class="space-y-5">
+          <div><label for="l-email" class="vx-label">Email address</label><input id="l-email" type="email" required autocomplete="email" placeholder="alex@company.com" class="vx-input py-3" /></div>
+          <div>
+            <label for="l-pass" class="vx-label">Password</label>
+            <div class="relative"><input id="l-pass" name="l-pass" type="password" required autocomplete="current-password" placeholder="Enter your password" class="vx-input py-3 pr-12" />
+              <button type="button" data-toggle-pw="l-pass" class="absolute inset-y-0 right-0 grid w-12 place-items-center rounded-r-xl text-midnight-400 transition hover:text-midnight-700 focus:outline-none focus-visible:text-volt-500 dark:hover:text-white" aria-label="Show password">
+                <span class="eye-on"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span><span class="eye-off hidden"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.9 17.9A10.7 10.7 0 0 1 12 19c-6.4 0-10-7-10-7a18 18 0 0 1 5.1-5.9M9.9 4.2A9.7 9.7 0 0 1 12 4c6.4 0 10 7 10 7a18 18 0 0 1-2.2 3.2M1 1l22 22"/></svg></span></button></div>
+          </div>
+          <div class="flex items-center justify-between">
+            <label class="flex cursor-pointer items-center gap-2.5 text-sm text-midnight-600 dark:text-midnight-400"><input type="checkbox" class="h-4 w-4 rounded border-midnight-300 bg-white text-volt-500 focus:ring-2 focus:ring-volt-400 focus:ring-offset-0 dark:border-midnight-600 dark:bg-midnight-800" />Remember me</label>
+            <a href="#" class="text-sm font-medium text-volt-700 transition hover:text-volt-500 dark:text-volt-400 dark:hover:text-volt-300">Forgot password?</a></div>
+          <button type="submit" class="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-volt-600 to-cyber-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-volt-500/30 transition-all duration-300 hover:scale-[1.02] hover:shadow-volt-500/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-volt-300">Sign in</button>
+        </form>
+        <p class="mt-8 text-center text-sm text-midnight-500">Don't have an account? <a href="register.html" class="font-medium text-volt-700 transition hover:text-volt-500 dark:text-volt-400 dark:hover:text-volt-300">Create one</a></p>
+      </main>
+    </div>
+  </div>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

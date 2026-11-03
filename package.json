@@ -1,0 +1,13 @@
+{
+  "name": "vortexai-admin",
+  "version": "1.0.0",
+  "description": "VortexAI - Premium SaaS & AI Admin Dashboard (HTML + Tailwind CSS)",
+  "private": true,
+  "scripts": {
+    "build": "tailwindcss -i ./src/input.css -o ./assets/css/style.css --minify",
+    "watch": "tailwindcss -i ./src/input.css -o ./assets/css/style.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}
